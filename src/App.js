@@ -90,13 +90,14 @@ function App() {
 const [titre,setTitre]=useState("")
 const getTitre=(titre)=>{setTitre(titre)}
     const addmovie=(newmovie)=>setMovies([...movies,newmovie] )
-    
+    const [rate,setrate]=useState(1) 
+    const getrate=(rate)=>{setrate(rate)}
   return (
     <> 
     
-     <NavBar  addmovie={addmovie}  getTitre={getTitre} />
+     <NavBar  addmovie={addmovie}  getTitre={getTitre} getrate={getrate}/>
      
-    <MovieList movies={movies} titre={titre} /> 
+    <MovieList movies={movies} titre={titre} rate={rate} /> 
      
     </>
   );

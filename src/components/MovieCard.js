@@ -10,6 +10,10 @@ function MovieCard({movie}) {
         {movie.description}
         
       </Card.Text>
+      <Card.Text>
+        {"⭐".repeat(movie.rate)}
+        
+      </Card.Text>
       <Button variant="primary">Go Download</Button>
       <ReactStars
     count={5}

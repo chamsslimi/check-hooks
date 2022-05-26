@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Container, Form, FormControl, Nav,Button, Navbar, Modal } from 'react-bootstrap'
+import ReactStars from 'react-rating-stars-component';
 import '../App.css';
  
 
-function NavBar({addmovie,searchmovie,getTitre}) {
+function NavBar({addmovie,searchmovie,getTitre,getrate}) {
   const [show, setShow] = useState(false);
   const [title,setTitle]=useState("")
   const [description,setDescription]=useState("")
@@ -16,11 +17,15 @@ function NavBar({addmovie,searchmovie,getTitre}) {
    }  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-   
+  const ratingChanged = (newRating) => {
+    getrate(newRating);
+  };
+
   return (
     <div> <Navbar bg="info"  variant="lighter">
     <Container fluid>
       <Navbar.Brand href="#" className='watchmovie' >Watch Movies</Navbar.Brand>
+
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav
@@ -30,7 +35,13 @@ function NavBar({addmovie,searchmovie,getTitre}) {
         >
          
         </Nav>
-        
+        <ReactStars
+    count={5}
+    onChange={ratingChanged}
+    size={24}
+    activeColor="#ffd700"
+   
+  />,
         <Form className="d-flex" style= {{paddingRight:'10px'}}>
           <FormControl
             type="search"
